@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.ProductBean;
@@ -43,20 +44,20 @@ public class productSrch extends HttpServlet {
 			e.printStackTrace();
 		}
 		//HashMap<String, ArrayList<?>> myMap=new HashMap<String, ArrayList<?>>();
-		JSONObject myJson=new JSONObject();
+		JSONArray myJsonArr=new JSONArray();
 		
 		for(int i=0;i<SrchedProdList.size();i++) {
-			JSONObject myJsonInner=new JSONObject();
+			JSONObject myJsonObj=new JSONObject();
 			
-			myJsonInner.put("prod_id", SrchedProdList.get(i).getProd_id());
-			myJsonInner.put("prod_name", SrchedProdList.get(i).getProd_name());
-			myJsonInner.put("prod_prod_introduction", SrchedProdList.get(i).getProd_introduction());
-			myJsonInner.put("prod_price", SrchedProdList.get(i).getProd_price());
-			myJsonInner.put("prod_size_stock", SrchedProdList.get(i).getProd_size_stock());
+			myJsonObj.put("prod_id", SrchedProdList.get(i).getProd_id());
+			myJsonObj.put("prod_name", SrchedProdList.get(i).getProd_name());
+			myJsonObj.put("prod_prod_introduction", SrchedProdList.get(i).getProd_introduction());
+			myJsonObj.put("prod_price", SrchedProdList.get(i).getProd_price());
+			myJsonObj.put("prod_size_stock", SrchedProdList.get(i).getProd_size_stock());
 			
-			myJson.put(String.valueOf(i),myJsonInner);
+			myJsonArr.put(myJsonObj);
 		}
-		out.print(myJson);
+		out.print(myJsonArr);
 	}
 
 	

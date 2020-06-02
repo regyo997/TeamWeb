@@ -1,5 +1,4 @@
 <%@page import="shop.*"%>
-<%@page import="conn.*" %>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -303,10 +302,6 @@
 								</tr>								
 							</tbody>
 						</table>
-						<%
-							ConnQuery conn=new ConnQuery();
-							String sql = "";
-						%>
 						<hr class="soft" />
 						<form method="post" action="doCheckOut">
 						收件人姓名：

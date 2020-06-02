@@ -100,7 +100,6 @@ if(session.getAttribute("cart")==null){
 							int id=(int)session.getAttribute("mem_id");
 							viewCount.setViewId(id);
 							viewCount.setViewIp(ip);
-							viewCount.setViewN(1);
 					}   
 					%>
 					本站受訪次數:

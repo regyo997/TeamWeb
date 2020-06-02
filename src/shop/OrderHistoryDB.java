@@ -5,7 +5,7 @@ package shop;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import conn.ConnQuery;
+import model.ConnDB;
 
 public class OrderHistoryDB {
 	
@@ -16,13 +16,15 @@ public class OrderHistoryDB {
 	public ArrayList<ArrayList<OrderListDetailObject>> getArrArrDetail(){return this.arrArrDetail;}
 	
 	public void searchOrderHistoryById(int mem_id) {
-		ConnQuery connQry=new ConnQuery();
+		ConnDB conn=new ConnDB();
 		String sql;
 		
 		//先查訂單主單號
-		sql="SELECT * FROM orderList WHERE mem_id="+mem_id+" ORDER BY orderList_id DESC";
-		connQry.setSql(sql);
-		ResultSet rs1 = connQry.getRs();
+		sql="SELECT * FROM orderList WHERE mem_id=? ORDER BY orderList_id DESC";
+		conn.setPreparedStatement(sql);
+		conn.setInt(1, mem_id);
+		conn.executeQuery();
+		ResultSet rs1 = conn.getRs();
 		ArrayList<OrderListDetailObject> arrDetail = null;
 		try {
 			while(rs1.next()) {
@@ -43,9 +45,11 @@ public class OrderHistoryDB {
 				arrMain.add(orderListObject);
 				
 				//再逐筆查詢明細
-				sql="SELECT orderlistdetail.prod_id,quantity,prod_name,prod_price,prod_introduction FROM orderlistdetail INNER JOIN product ON orderlistdetail.prod_id = product.prod_id WHERE orderList_id="+rs1.getInt(1);
-				connQry.setSql(sql);
-				ResultSet rs2=connQry.getRs();
+				sql="SELECT orderlistdetail.prod_id,quantity,prod_name,prod_price,prod_introduction FROM orderlistdetail INNER JOIN product ON orderlistdetail.prod_id = product.prod_id WHERE orderList_id=?;";
+				conn.setPreparedStatement(sql);
+				conn.setInt(1, rs1.getInt(1));
+				conn.executeQuery();
+				ResultSet rs2=conn.getRs();
 				
 				arrDetail=new ArrayList<OrderListDetailObject>();
 				while(rs2.next()) {

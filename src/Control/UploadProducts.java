@@ -17,8 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import conn.ConnQuery;
-import conn.ConnUpdate;
+import model.ConnDB;
 
 @MultipartConfig
 @WebServlet("/doUploadProducts")
@@ -47,13 +46,20 @@ public class UploadProducts extends HttpServlet {
     		//===
     		String imgNewName;
     		//===DB Update
-    			String sql=String.format("INSERT INTO teamweb2020.product(prod_name,prod_price,prod_introduction,prod_size_stock,prod_img,prod_view) VALUE('%s',%d,'%s',%d,'%s',1)",name,price,intro,leftNum,mypath);
-    			ConnUpdate connUp= new ConnUpdate();
-    			connUp.setSql(sql);
+    			String sql="INSERT INTO teamweb2020.product(prod_name,prod_price,prod_introduction,prod_size_stock,prod_img,prod_view) VALUE(?,?,?,?,?,1);";
+    			ConnDB conn= new ConnDB();
+    			conn.setPreparedStatement(sql);
+    			conn.setString(1, name);
+    			conn.setInt(2, price);
+    			conn.setString(3, intro);
+    			conn.setInt(4, leftNum);
+    			conn.setString(5, mypath);
+    			conn.executeUpdate();
     		//===DB_Query
-        		ConnQuery connQry=new ConnQuery();
-        		connQry.setSql("Select * from teamweb2020.product;");
-        		ResultSet rs = connQry.getRs();
+        		conn=new ConnDB();
+        		conn.setPreparedStatement("Select * from teamweb2020.product;");
+        		conn.executeQuery();
+        		ResultSet rs = conn.getRs();
         		try {
 					rs.last();
 					imgId=rs.getInt(1);

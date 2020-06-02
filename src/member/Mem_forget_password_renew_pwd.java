@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import conn.ConnQuery;
-import conn.ConnUpdate;
+import model.ConnDB;
 
 
 @WebServlet("/doForgetPasswordRenewPwd")
@@ -26,13 +25,15 @@ public class Mem_forget_password_renew_pwd extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		//====
 		String email=request.getParameter("email");
-		String sql="SELECT * FROM TEAMWEB2020.MEMBER WHERE mem_mail='"+email+"';";
-		ConnQuery connQry=new ConnQuery();
-		connQry.setSql(sql);
+		String sql="SELECT * FROM TEAMWEB2020.MEMBER WHERE mem_mail=?;";
+		ConnDB conn =new ConnDB();
+		conn.setPreparedStatement(sql);
+		conn.setString(1, email);
+		conn.executeQuery();
 		//====
 		try {
-			if (connQry.getQuery_count() > 0) {
-				ResultSet rs = connQry.getRs();
+			if (conn.getQuery_count() > 0) {
+				ResultSet rs = conn.getRs();
 				rs.first();
 				//===
 				String id = String.valueOf(rs.getInt(1));
@@ -40,10 +41,13 @@ public class Mem_forget_password_renew_pwd extends HttpServlet {
 				int encPara = Integer.parseInt(request.getParameter("enc"));
 				if (encPara==encDB) {
 					String pwd = request.getParameter("inputpwd");
-					sql = String.format("UPDATE TEAMWEB2020.MEMBER SET mem_pwd = '%s' WHERE mem_id = %s;",pwd,id);
-					ConnUpdate connUp = new ConnUpdate();
-					connUp.setSql(sql);
-					if (connUp.getN() > 0) {
+					sql = "UPDATE TEAMWEB2020.MEMBER SET mem_pwd = ? WHERE mem_id = ?;";
+					conn = new ConnDB();
+					conn.setPreparedStatement(sql);
+					conn.setString(1, pwd);
+					conn.setString(2, id);
+					conn.executeUpdate();
+					if (conn.getUpdate_count() > 0) {
 						response.sendRedirect("login.jsp?msg=5");
 					} else {
 						out.print("出問題啦1");

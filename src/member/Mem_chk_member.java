@@ -1,14 +1,13 @@
 package member;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import conn.ConnQuery;
+import model.ConnDB;
 
 
 @WebServlet("/doQueryEmail")
@@ -29,15 +28,19 @@ public class Mem_chk_member extends HttpServlet {
 		//^^^ Field
 		
 		//vvv sql
-		String sql = String.format("SELECT * FROM teamweb2020.member WHERE mem_mail = '%s'",email);
+		String sql = "SELECT * FROM teamweb2020.member WHERE mem_mail = ?";
 //		out.print(name + account + email + passwd);//測試用
 //		out.print(sql);//測試用
 		//^^^ sql
 		
 		/// vvv Driver Connect Statement excuteQuery() 
-		ConnQuery connQry =new ConnQuery();
-		connQry.setSql(sql);
-		int n=connQry.getQuery_count();
+		
+		int n;
+		ConnDB connDB=new ConnDB();
+		connDB.setPreparedStatement(sql);
+		connDB.setString(1, email);
+		connDB.executeQuery();
+		n=connDB.getQuery_count();
 		out.print(n);//傳回有查到幾條一樣的email  不是0 就是1 或者可能null(發生Exception的話)
 	}
 

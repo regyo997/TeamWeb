@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page pageEncoding="utf-8"%>
 <%@page import="shop.*"%>
-<%@page import="conn.*" %>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.*"%>
 <%

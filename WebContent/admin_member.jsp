@@ -1,7 +1,7 @@
 <%@page import="java.sql.*" %>
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page pageEncoding="utf-8"%>
-<%@page import="conn.*"%>
+<%@page import="model.*"%>
 <%
 	if (session.getAttribute("mem_level") != null) {
 		String mem_name = (String) session.getAttribute("mem_name");
@@ -21,18 +21,22 @@
 	}
 
 	String sql = "SELECT * FROM teamweb2020.member ORDER BY mem_id ASC";
-	ConnQuery cn = new ConnQuery();
-	cn.setSql(sql);
+	ConnDB cn = new ConnDB();
+	cn.setPreparedStatement(sql);
+	cn.executeQuery();
 	ResultSet rs=cn.getRs();
 	rs.first();
 	int query_count = cn.getQuery_count();
 	
 	if(request.getParameter("mem_level")!=null){
-		ConnUpdate connUp = new ConnUpdate();
+		ConnDB conn = new ConnDB();
 		int mem_id=Integer.parseInt(request.getParameter("mem_id"));
 		int mem_level=Integer.parseInt(request.getParameter("mem_level"));		
-		sql=String.format("UPDATE teamweb2020.member SET mem_level=%d WHERE mem_id = %d",mem_level,mem_id);
-		connUp.setSql(sql);
+		sql="UPDATE teamweb2020.member SET mem_level=? WHERE mem_id = ?;";
+		conn.setPreparedStatement(sql);
+		conn.setInt(1, mem_level);
+		conn.setInt(2, mem_id);
+		conn.executeUpdate();
 		response.sendRedirect("admin_member.jsp");
 	}
 %>
@@ -50,7 +54,7 @@
 <body>
 	<h1><strong>會員管理</strong></h1>
 <p class="w3-center">會員總人數：<%=query_count %>人</p>
-<form method="post" action="admin_index.jsp"">
+<form method="post" action="admin_index.jsp">
 	<input type="submit" id="btnQuit" value="離開" style="float:right;font-family:DFKai-sb;width:3%;">
 </form>
 <div class="w3-row w3-gray textCenter">
@@ -61,7 +65,7 @@
 </div>
 
 
-<% do{ %>
+<% while(rs.next()){ %>
 <div class="w3-row w3-border-bottom textCenter">
   <div class="w3-col m3 textLeft overflowH">
 	[<%=rs.getInt(1)%>]<%=rs.getString(2)%>
@@ -86,7 +90,7 @@
   </div>
 </div>
 
-<% }while(rs.next());
+<% }
 %>
 
 

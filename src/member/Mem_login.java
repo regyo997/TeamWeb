@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import conn.ConnUpdate;
+import model.ConnDB;
 
 /**
  * Servlet implementation class mem_login
@@ -40,10 +40,13 @@ public class Mem_login extends HttpServlet {
 		if (request.getParameter("mailOK") != null) {
 			String mem_mail = (String)request.getParameter("mem_mail");
 			String mem_chkcode = (String)request.getParameter("mem_chkcode");
-			String sql="UPDATE teamweb2020.member SET mem_level=2 WHERE mem_mail='"+mem_mail+"' AND mem_chkcode='"+mem_chkcode+"'";
-			ConnUpdate connUp =new ConnUpdate();
-			connUp.setSql(sql);
-			int n=connUp.getN();
+			String sql="UPDATE teamweb2020.member SET mem_level=2 WHERE mem_mail=? AND mem_chkcode=?;";
+			ConnDB conn =new ConnDB();
+			conn.setPreparedStatement(sql);
+			conn.setString(1, mem_mail);
+			conn.setString(2, mem_chkcode);
+			conn.executeUpdate();
+			int n=conn.getUpdate_count();
 			if (n>=1) {
 				response.sendRedirect(url);
 			}

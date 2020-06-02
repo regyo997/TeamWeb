@@ -1,18 +1,12 @@
 package member;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-
-import javax.mail.Transport;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import conn.ConnUpdate;
+import model.ConnDB;
 
 
 @WebServlet("/doRegister")
@@ -28,7 +22,6 @@ public class Mem_addmem extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/mtml;charset=utf-8");
-		PrintWriter out = response.getWriter();
 		//vvv參數
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -45,13 +38,15 @@ public class Mem_addmem extends HttpServlet {
 		}
 		//^^^產生驗證Email用的驗證碼
 		
-		//vvv INSERT INTO
-		String sql = String.format("INSERT INTO teamweb2020.member(mem_name,mem_mail,mem_pwd,mem_chkcode) "
-				+ "VALUE('%s','%s','%s','%s');",name, email, passwd,mem_chkcode);
-		
-		ConnUpdate connUp =new ConnUpdate();
-		connUp.setSql(sql);
-		int n=connUp.getN();
+		int n = 0;
+		String sql="INSERT INTO teamweb2020.member(mem_name,mem_mail,mem_pwd,mem_chkcode) VALUES(?,?,?,?);";
+		ConnDB connDB=new ConnDB();
+		connDB.setPreparedStatement(sql);
+		connDB.setString(1, name);
+		connDB.setString(2, email);
+		connDB.setString(3, passwd);
+		connDB.setString(4, mem_chkcode);
+		n = connDB.executeUpdate();
 		if (n>=1) {
 			SendMail sMail = new SendMail();
 			sMail.setTo(email);
@@ -66,6 +61,8 @@ public class Mem_addmem extends HttpServlet {
 				msg="1";
 			}
 			response.sendRedirect("register.jsp?msg="+msg);
+		}else {
+			System.out.println("未註冊完成"+n);
 		}
 		
 	}

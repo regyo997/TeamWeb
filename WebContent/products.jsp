@@ -43,6 +43,12 @@
 			$("#srchBtn").click(function(){
 				doAjax();
 			});
+			$('#keyWord').keypress(function(key) {
+				console.log(key.which);
+		        if(key.which == 13) {
+		            doAjax();
+		        }
+		    });
 		});
 		function doAjax(){
 			var htmlStr="";
@@ -55,13 +61,13 @@
 				},
 				dataType:"json",
 				
-				success:function(result){
-					for(var i=Object.keys(result).length-1;i>=0;i--){
+				success:function(jsonArr){
+					for(var i=jsonArr.length-1;i>=0;i--){
 						htmlStr+="<li class='span3'>";
 						htmlStr+="<div class='thumbnail'>";
-						htmlStr+="<a href='product_details.jsp?prod="+result[i].prod_id+"'><img src='uploadedIMG/"+result[i].prod_id+".jpg?sa="+Math.floor(Math.random()*10000)+"' alt=''/></a>";
+						htmlStr+="<a href='product_details.jsp?prod="+jsonArr[i].prod_id+"'><img src='uploadedIMG/"+jsonArr[i].prod_id+".jpg?sa="+Math.floor(Math.random()*10000)+"' alt=''/></a>";
 						htmlStr+="<div class='caption'>";
-						htmlStr+="<h5>"+result[i].prod_name+"&nbsp&nbsp$"+result[i].prod_price+"</h5><!--name-->";
+						htmlStr+="<h5>"+jsonArr[i].prod_name+"&nbsp&nbsp$"+jsonArr[i].prod_price+"</h5><!--name-->";
 						htmlStr+="<h4 style='text-align:center'>";
 						//htmlStr+="<a class='btn' href='product_details.jsp'>";
 						//htmlStr+="<i class='icon-zoom-in'></i>";
@@ -114,7 +120,7 @@
 </a>
   <div class="navbar-inner">
     <a class="brand" href="index.jsp"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
-		<form name="srchForm" class="form-inline navbar-search" method="post" action="products.jsp" >
+		<form name="srchForm" class="form-inline navbar-search" action="javascript:void(0);">
 		<input name="keyWord" id="keyWord" class="srchTxt" type="text" />
 		  <select class="srchTxt">
 			<option>All</option>

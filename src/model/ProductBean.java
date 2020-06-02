@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import conn.ConnQuery;
 
 public class ProductBean implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -22,10 +21,11 @@ public class ProductBean implements Serializable{
 	//回傳所有產品的List
 	public void AllProducts(){
 		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_view=1;";
-		ConnQuery connQry = new ConnQuery();
-		connQry.setSql(sql);
-		queryCount = connQry.getQuery_count();
-		ResultSet rs = connQry.getRs();
+		ConnDB conn = new ConnDB();
+		conn.setPreparedStatement(sql);
+		conn.executeQuery();
+		queryCount = conn.getQuery_count();
+		ResultSet rs = conn.getRs();
 		
 		try {
 			rs.first();
@@ -47,11 +47,13 @@ public class ProductBean implements Serializable{
 	
 	//指定某id的產品
 	public void ProductById(int id){
-		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_id="+id+" AND prod_view=1;";
-		ConnQuery connQry = new ConnQuery();
-		connQry.setSql(sql);
-		queryCount = connQry.getQuery_count();
-		ResultSet rs = connQry.getRs();
+		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_id=? AND prod_view=1;";
+		ConnDB conn = new ConnDB();
+		conn.setPreparedStatement(sql);
+		conn.setInt(1, id);
+		conn.executeQuery();
+		queryCount = conn.getQuery_count();
+		ResultSet rs = conn.getRs();
 		
 		try {
 				rs.first();
@@ -68,11 +70,13 @@ public class ProductBean implements Serializable{
 	
 	//搜尋產品名稱關鍵字====
 	public void serchProducts(String keyWord) {
-		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_view=1 AND prod_name LIKE '%"+keyWord+"%';";
-		ConnQuery connQry = new ConnQuery();
-		connQry.setSql(sql);
-		queryCount = connQry.getQuery_count();
-		ResultSet rs = connQry.getRs();
+		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_view=1 AND prod_name LIKE '%?%';";
+		ConnDB conn = new ConnDB();
+		conn.setPreparedStatement(sql);
+		conn.setString(1, keyWord);
+		conn.executeQuery();
+		queryCount = conn.getQuery_count();
+		ResultSet rs = conn.getRs();
 		
 		try {
 			rs.first();

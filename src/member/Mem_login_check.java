@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import conn.ConnQuery;
+import model.ConnDB;
 import shop.*;
 
 @WebServlet("/logincheck")
@@ -33,10 +33,13 @@ public class Mem_login_check extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String login_email = request.getParameter("login_email");
 		String login_password = request.getParameter("login_password");
-		String sql = String.format("SELECT * FROM teamweb2020.member WHERE mem_mail='%s' AND mem_pwd='%s' AND mem_level>0;", login_email,login_password);
+		String sql = "SELECT * FROM teamweb2020.member WHERE mem_mail=? AND mem_pwd=? AND mem_level>0;";
 		String url="";
-		ConnQuery cn=new ConnQuery();
-		cn.setSql(sql);
+		ConnDB cn=new ConnDB();
+		cn.setPreparedStatement(sql);
+		cn.setString(1, login_email);
+		cn.setString(2, login_password);
+		cn.executeQuery();
 		int num = cn.getQuery_count();
 		ResultSet rs = cn.getRs();
 		try {
