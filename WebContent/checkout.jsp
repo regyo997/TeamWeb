@@ -1,4 +1,4 @@
-<%@page import="shop.*"%>
+<%@page import="model.*"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

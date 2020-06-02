@@ -1,16 +1,15 @@
-<%@page import="shop.Cart"%>
+<%@page import="model.Cart"%>
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page pageEncoding="utf-8"%>
-<%@page import="java.util.ArrayList,shop.Product" %>
+<%@page import="java.util.ArrayList,model.Product" %>
 <%
-
-if(request.getParameter("prod")==null){
+	if(request.getParameter("prod")==null){
 	System.out.print("未指定產品或產品不存在");
 	response.sendRedirect("index.jsp");
 }else{
 	int prod_id=Integer.parseInt((request.getParameter("prod")));
 	
-	shop.ProductDb myBean = new shop.ProductDb();
+	model.ProductDb myBean = new model.ProductDb();
 	Product myProd=myBean.getProduct(prod_id);
 	//括號"}"在</html>後面
 %>
@@ -60,7 +59,7 @@ if(request.getParameter("prod")==null){
 					$("#addBtn").click(function(){
 						
 							$.ajax({
-								url:"doCartServlet",
+								url:"doSearchAjax",
 								type:"post",
 								cache:"false",
 								dataType:"json",

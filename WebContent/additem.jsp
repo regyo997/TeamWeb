@@ -1,8 +1,8 @@
-<%@page import="shop.Product"%>
+<%@page import="model.Product"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="productdb" scope="application" class=shop.ProductDb/>
-<jsp:useBean id="cart" scope="session" class=shop.Cart />
+<jsp:useBean id="productdb" scope="application" class=model.ProductDb/>
+<jsp:useBean id="cart" scope="session" class=model.Cart />
 <%
 	String strProd_id = request.getParameter("add");
 	if(strProd_id != null && strProd_id != ""){

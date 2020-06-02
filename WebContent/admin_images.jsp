@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page pageEncoding="utf-8"%>
-<%@page import="java.util.ArrayList,shop.Product" %>
+<%@page import="java.util.ArrayList,model.Product" %>
 <%
 	//Directs caches not to store the page under any circumstance
 	response.setDateHeader("Expires", -1);
@@ -80,7 +80,9 @@
 	<div class="imgContainer">
 	</div>
 	<!-- QueryProduct -->
-	<%shop.ProductDb myBean=new shop.ProductDb(); %>
+	<%
+		model.ProductDb myBean=new model.ProductDb();
+	%>
 	<%ArrayList<Product> arrP = (ArrayList)myBean.getProducts();%>
 	<%
 		//vvv呈現圖片

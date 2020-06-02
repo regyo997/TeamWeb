@@ -1,4 +1,4 @@
-﻿<%@page import="shop.*"%>
+<%@page import="model.*"%>
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page pageEncoding="utf-8"%>
 <%@page import="java.util.ArrayList" %>
@@ -88,13 +88,13 @@ if(session.getAttribute("cart")==null){
 					%>
 					<%
 						//useBean scope=session
-						member.Mem_visit_count viewCount;
-						if(session.getAttribute("viewCount")==null){
-							viewCount = new member.Mem_visit_count();
-							session.setAttribute("viewCount", viewCount);
-						}else{
-							viewCount=(member.Mem_visit_count)session.getAttribute("viewCount");
-						}
+									model.Mem_visit_count viewCount;
+									if(session.getAttribute("viewCount")==null){
+										viewCount = new model.Mem_visit_count();
+										session.setAttribute("viewCount", viewCount);
+									}else{
+										viewCount=(model.Mem_visit_count)session.getAttribute("viewCount");
+									}
 					%>
 					<%  if(session.getAttribute("mem_id")!=null){
 							int id=(int)session.getAttribute("mem_id");
@@ -210,10 +210,10 @@ if(session.getAttribute("cart")==null){
 	<!--vvv 使用Bean查詢商品數量 -->
 	
 	<%
-	shop.ProductDb myBean=new ProductDb();
-	ArrayList<Product> arrP = (ArrayList)myBean.getProducts();
-	if(myBean.getQuery_count()>0){
-	%>
+			model.ProductDb myBean=new ProductDb();
+			ArrayList<Product> arrP = (ArrayList)myBean.getProducts();
+			if(myBean.getQuery_count()>0){
+		%>
 	<!--^^^ 使用Bean查詢商品數量 -->	
 	<div id="carouselBlk">
 		<div id="myCarousel" class="carousel slide">

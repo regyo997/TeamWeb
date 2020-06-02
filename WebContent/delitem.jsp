@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="cart" scope="session" class=shop.Cart />
+<jsp:useBean id="cart" scope="session" class=model.Cart />
 
 <% 
 	String strProd_id = request.getParameter("prod_id");
