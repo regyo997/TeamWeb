@@ -1,8 +1,6 @@
 package Control.product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,15 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import model.ConnDB;
 
 
-@WebServlet("/doUpdateImages")
-public class UpdateImages extends HttpServlet {
+@WebServlet("/doUpdateProducts")
+public class UpdateProducts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
 		// ===
 		String doWhat = request.getParameter("updateBtn");
 		if (doWhat.equals("刪除")) {
