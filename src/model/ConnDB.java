@@ -56,6 +56,7 @@ public class ConnDB {
 	public int getQuery_count() {
 		try {
 			query_count=0;
+			rs.beforeFirst();
 			while(rs.next())query_count++;
 			rs.beforeFirst();
 		} catch (SQLException e) {
