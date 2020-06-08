@@ -1,4 +1,4 @@
-package Control.member;
+package control.member;
 
 import java.io.IOException;
 import java.sql.ResultSet;

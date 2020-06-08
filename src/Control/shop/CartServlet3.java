@@ -1,4 +1,4 @@
-package Control.shop;
+package control.shop;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
