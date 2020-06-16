@@ -53,7 +53,7 @@
 		function doAjax(){
 			var htmlStr="";
 			var aj=$.ajax({
-				url:"productSrch",
+				url:"ProductSrch",
 				type:"post",
 				cache:false,
 				data:{

@@ -159,7 +159,7 @@ if(session.getAttribute("cart")==null){
 								String mem_name = (String) session.getAttribute("mem_name");
 								if (mem_name != null) {
 							%>
-								<a href="/TeamWeb/logout" role="button" data-toggle="modal"
+								<a href="/TeamWeb/doLogout" role="button" data-toggle="modal"
 							style="padding-right: 0"><span
 								class="btn btn-large btn-success">登出</span></a> 
 							<%
@@ -180,7 +180,7 @@ if(session.getAttribute("cart")==null){
 								</div>
 								<div class="modal-body">
 									<form class="form-horizontal loginFrm" method="post"
-										action="logincheck">
+										action="doLogin">
 										<div class="control-group">
 											<input name="login_email" type="text" id="inputEmail" placeholder="Email">
 										</div>

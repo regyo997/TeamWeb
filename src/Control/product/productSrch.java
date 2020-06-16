@@ -20,8 +20,8 @@ import model.ProductBean;
 import model.ProductDb;
 
 
-@WebServlet("/productSrch")
-public class productSrch extends HttpServlet {
+@WebServlet("/ProductSrch")
+public class ProductSrch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     

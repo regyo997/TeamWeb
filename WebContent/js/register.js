@@ -22,7 +22,7 @@ function check_Data()//正則檢驗格式
 		validateIt();//進行驗證碼
 }
 
-function createCaptcha(){
+function createCaptcha(){//產生驗證碼
 	Captcha = "";//歸零
 	document.getElementById("Captcha").placeholder="";//歸零
 	var arr = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','j','k','l','m','n','p','q','r','s','t','u','v','w','x','y','z');//驗證碼宇集合
@@ -48,7 +48,7 @@ function validateIt() {//驗證驗證碼
 	}
 }
 
-  function queryEmail(){//檢查email是否重複註冊
+  function queryEmail(){//檢查email是否重複註冊　沒有就submit
 	var xmlhttp;//創立一個空物件 等著被用來製作成XMLHttpRequest的實體物件 (這物件之後會把Request包起來 傳出去 到時候收到的回應也會被包進物件裡面)
 	if(window.ActiveXObject)//判斷瀏覽器如果是用這種類別傳送 那就建立這種類別的物件 這邊是IE6版以前用的類別
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");

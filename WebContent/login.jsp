@@ -182,27 +182,11 @@
 	
 	</ul>
 	<%
-		if(request.getParameter("msg")!=null){
-			String msg=request.getParameter("msg");
-			String prt="";
-			switch(msg){
-				case "1":
-					prt="輸入的帳號或密碼有誤，請重新登入！";
-					break;
-				case "2":
-					prt="請先登入會員再進入！";
-					break;
-				case "3":
-					prt="非管理者不能進入管理介面！";
-					break;
-				case "4":
-					prt="帳號未驗證，請先驗證再行登入！";
-					break;
-				case "5":
-					prt="密碼更新完成，請用新密碼登入！";
-			}
+		if(session.getAttribute("msg")!=null){
+			String msg=(String)session.getAttribute("msg");
+			session.setAttribute("msg",null);
 	%>
-	<h3> Login<span style="font-weight: normal;color:red;font-style: italic;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(prt);%></span></h3>
+	<h3> Login<span style="font-weight: normal;color:red;font-style: italic;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(msg);%></span></h3>
 	<%
 		}else{
 	%>
@@ -219,7 +203,7 @@
 		<div class="span4">
 			<div class="well">
 				<h5>登入會員</h5>
-			<form name="loginFrm" method="post" action="logincheck">
+			<form name="loginFrm" method="post" action="doLogin">
 			  <div class="control-group">
 				<label class="control-label" for="inputEmail1">Email</label>
 				<div class="controls">

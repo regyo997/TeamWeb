@@ -15,7 +15,7 @@ import model.ConnDB;
 
 
 @WebServlet("/doForgetPasswordRenewPwd")
-public class Mem_forget_password_renew_pwd extends HttpServlet {
+public class Forget_password_renew_pwd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    

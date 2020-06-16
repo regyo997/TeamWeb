@@ -16,7 +16,7 @@ import model.Cart;
 
 
 @WebServlet("/doPlusMinusDel")
-public class CartServlet3 extends HttpServlet {
+public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
