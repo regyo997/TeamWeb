@@ -8,12 +8,16 @@
 		int mem_level = Integer.parseInt(session.getAttribute("mem_level").toString());
 	
 		if (mem_name == "" || mem_level < 9) {
-			session.setAttribute("msg", "非管理者不能進入管理介面！");
-			response.sendRedirect("login.jsp");
+			request.setAttribute("msg", "3");
+			String url = "/login";
+			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
 		}
 	}else{
-		session.setAttribute("msg", "請先登入會員再進入！");
-		response.sendRedirect("login.jsp");
+		request.setAttribute("msg", "2");
+		String url = "/login";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 	String sql = "SELECT * FROM teamweb2020.member ORDER BY mem_id ASC";

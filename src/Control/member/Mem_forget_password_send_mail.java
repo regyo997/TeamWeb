@@ -15,7 +15,7 @@ import model.SendMail;
 
 
 @WebServlet("/doForgetPasswordSendMail")
-public class Forget_password_send_mail extends HttpServlet {
+public class Mem_forget_password_send_mail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     

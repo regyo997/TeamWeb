@@ -11,7 +11,7 @@ import model.ConnDB;
 
 
 @WebServlet("/doQueryEmail")
-public class QueryEmail extends HttpServlet {
+public class Mem_chk_member extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     

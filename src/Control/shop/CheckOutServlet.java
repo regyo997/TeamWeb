@@ -22,7 +22,7 @@ import model.Product;
 import model.ProductDb;
 
 @WebServlet("/doCheckOut")
-public class CheckOut extends HttpServlet {
+public class CheckOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
