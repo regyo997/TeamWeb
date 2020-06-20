@@ -88,7 +88,7 @@
 		//vvv呈現圖片
 		for(int i=myBean.getQuery_count()-1;i>=0;i--){//要改用Array[Qurery數量]
 	%>
-		<form name="updateForm<%=arrP.get(i).getProd_id()%>" method="get" action="UpdateProduct">
+		<form name="updateForm<%=arrP.get(i).getProd_id()%>" method="post" action="UpdateProduct">
 			<div class="fileItem" style="float:left;">
      	 		
        			<img src="uploadedIMG/<%=arrP.get(i).getProd_id()%>.jpg?sa=<%=(int)(Math.random()*10000)%>" width=200%;><br>
