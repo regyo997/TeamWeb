@@ -1,4 +1,4 @@
-package control.shop;
+package controller.shop;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,8 +15,8 @@ import model.Cart;
 
 
 
-@WebServlet("/doPlusMinusDel")
-public class CartServlet3 extends HttpServlet {
+@WebServlet("/PlusMinusDel")
+public class PlusMinusDelController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -32,13 +32,11 @@ public class CartServlet3 extends HttpServlet {
 			cart=(Cart)session.getAttribute("cart");
 			cart.deleteItem(prod_id);
 			session.setAttribute("cart", cart);
-			response.sendRedirect("product_summary.jsp");
 		}else if(request.getParameter("minus_id")!=null) {
 			int prod_id=Integer.parseInt(request.getParameter("minus_id"));
 			cart=(Cart)session.getAttribute("cart");
 			cart.setItemNum(prod_id, cart.getItemQuantity(prod_id)-1);
 			session.setAttribute("cart", cart);
-			response.sendRedirect("product_summary.jsp");
 		}else if(request.getParameter("plus_id")!=null) {
 			int prod_id=Integer.parseInt(request.getParameter("plus_id"));
 			int prod_stock_size=Integer.parseInt(request.getParameter("plus_size_stock"));
@@ -47,8 +45,8 @@ public class CartServlet3 extends HttpServlet {
 				cart.setItemNum(prod_id, cart.getItemQuantity(prod_id)+1);
 				session.setAttribute("cart", cart);
 			}
-			response.sendRedirect("product_summary.jsp");
 		}
+		response.sendRedirect("product_summary.jsp");
 	}
 
 }

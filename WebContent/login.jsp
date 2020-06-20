@@ -2,21 +2,12 @@
 <%@page pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Bootshop online Shopping cart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
 	<meta name="author" content="">
-<!--Less styles -->
-   <!-- Other Less css file //different less files has different color scheam
-	<link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
-	-->
-	<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
-	<script src="themes/js/less.js" type="text/javascript"></script> -->
-	
 <!-- Bootstrap style --> 
     <link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen"/>
     <link href="themes/css/base.css" rel="stylesheet" media="screen"/>
@@ -34,142 +25,143 @@
 	<style type="text/css" id="enject"></style>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;400&display=swap" rel="stylesheet">
 	<script src="js/checkLogin.js"></script>
-  </head>
+</head>
+  <!-- Body -->
 <body>
-<div id="header">
-<div class="container">
-<div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
-	<div class="span6">
-	<div class="pull-right">
-		<a href="product_summary.jsp"><span class="">Fr</span></a>
-		<a href="product_summary.jsp"><span class="">Es</span></a>
-		<span class="btn btn-mini">En</span>
-		<a href="product_summary.jsp"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.jsp"><span class="">$</span></a>
-		<a href="product_summary.jsp"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
-	</div>
-	</div>
-</div>
-<!-- Navbar ================================================== -->
-<div id="logoArea" class="navbar">
-<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-</a>
-  <div class="navbar-inner">
-    <a class="brand" href="index.jsp"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.jsp" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-    </form>
-    <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.jsp">Specials Offer</a></li>
-	 <li class=""><a href="normal.jsp">Delivery</a></li>
-	 <li class=""><a href="contact.jsp">Contact</a></li>
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
-			<h3>Login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
-	</li>
-    </ul>
-  </div>
-</div>
-</div>
-</div>
-<!-- Header End====================================================================== -->
-<div id="mainBody">
+	<div id="header">
 	<div class="container">
-	<div class="row">
+	<div id="welcomeLine" class="row">
+		<div class="span6">Welcome!<strong> User</strong></div>
+		<div class="span6">
+		<div class="pull-right">
+			<a href="product_summary.jsp"><span class="">Fr</span></a>
+			<a href="product_summary.jsp"><span class="">Es</span></a>
+			<span class="btn btn-mini">En</span>
+			<a href="product_summary.jsp"><span>&pound;</span></a>
+			<span class="btn btn-mini">$155.00</span>
+			<a href="product_summary.jsp"><span class="">$</span></a>
+			<a href="product_summary.jsp"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		</div>
+		</div>
+	</div>
+<!-- Navbar ================================================== -->
+	<div id="logoArea" class="navbar">
+	<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</a>
+  	<div class="navbar-inner">
+	    <a class="brand" href="index.jsp"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
+			<form class="form-inline navbar-search" method="post" action="products.jsp" >
+			<input id="srchFld" class="srchTxt" type="text" />
+		  	<select class="srchTxt">
+				<option>All</option>
+				<option>CLOTHES </option>
+				<option>FOOD AND BEVERAGES </option>
+				<option>HEALTH & BEAUTY </option>
+				<option>SPORTS & LEISURE </option>
+				<option>BOOKS & ENTERTAINMENTS </option>
+			</select> 
+		  	<button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+    	</form>
+    	<ul id="topMenu" class="nav pull-right">
+	 	<li class=""><a href="special_offer.jsp">Specials Offer</a></li>
+	 	<li class=""><a href="normal.jsp">Delivery</a></li>
+	 	<li class=""><a href="contact.jsp">Contact</a></li>
+	 	<li class="">
+	 	<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+		<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
+		  	<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
+				<h3>Login Block</h3>
+		  	</div>
+		  	<div class="modal-body">
+				<form class="form-horizontal loginFrm">
+			  	<div class="control-group">								
+					<input type="text" id="inputEmail" placeholder="Email">
+			  	</div>
+			  	<div class="control-group">
+					<input type="password" id="inputPassword" placeholder="Password">
+			  	</div>
+			  	<div class="control-group">
+					<label class="checkbox">
+					<input type="checkbox"> Remember me
+					</label>
+			  	</div>
+				</form>		
+				<button type="submit" class="btn btn-success">Sign in</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		  	</div>
+		</div>
+		</li>
+    	</ul>
+  	</div>
+	</div>
+	</div>
+	</div>
+<!-- Header End====================================================================== -->
+	<div id="mainBody">
+		<div class="container">
+		<div class="row">
 <!-- Sidebar ================================================== -->
-	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="product_summary.jsp"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
-		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-			<li class="subMenu open"><a> ELECTRONICS [230]</a>
-				<ul>
-				<li><a class="active" href="products.jsp"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+		<div id="sidebar" class="span3">
+			<div class="well well-small"><a id="myCart" href="product_summary.jsp"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+			<ul id="sideManu" class="nav nav-tabs nav-stacked">
+				<li class="subMenu open"><a> ELECTRONICS [230]</a>
+					<ul>
+					<li><a class="active" href="products.jsp"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+					</ul>
+				</li>
+				<li class="subMenu"><a> CLOTHES [840] </a>
+					<ul style="display:none">
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
 				</ul>
-			</li>
-			<li class="subMenu"><a> CLOTHES [840] </a>
-			<ul style="display:none">
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
+				</li>
+				<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+					<ul style="display:none">
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
+					<li><a href="products.jsp"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
+				</ul>
+				</li>
+				<li><a href="products.jsp">HEALTH & BEAUTY [18]</a></li>
+				<li><a href="products.jsp">SPORTS & LEISURE [58]</a></li>
+				<li><a href="products.jsp">BOOKS & ENTERTAINMENTS [14]</a></li>
 			</ul>
-			</li>
-			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
-				<ul style="display:none">
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
-				<li><a href="products.jsp"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
-			</ul>
-			</li>
-			<li><a href="products.jsp">HEALTH & BEAUTY [18]</a></li>
-			<li><a href="products.jsp">SPORTS & LEISURE [58]</a></li>
-			<li><a href="products.jsp">BOOKS & ENTERTAINMENTS [14]</a></li>
-		</ul>
-		<br/>
-		  <div class="thumbnail">
-			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
-			<div class="caption">
-			  <h5>Panasonic</h5>
+			<br/>
+		  	<div class="thumbnail">
+				<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
+				<div class="caption">
+			  	<h5>Panasonic</h5>
 				<h4 style="text-align:center"><a class="btn" href="product_details.jsp"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 			</div>
-		  </div><br/>
+		  	</div><br/>
 			<div class="thumbnail">
 				<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
 				<div class="caption">
 				  <h5>Kindle</h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.jsp"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+				  <h4 style="text-align:center"><a class="btn" href="product_details.jsp"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 				</div>
-			  </div><br/>
+			</div><br/>
 			<div class="thumbnail">
 				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
 				<div class="caption">
-				  <h5>Payment Methods</h5>
+					<h5>Payment Methods</h5>
 				</div>
 			  </div>
 	</div>
@@ -182,27 +174,11 @@
 	
 	</ul>
 	<%
-		if(request.getParameter("msg")!=null){
-			String msg=request.getParameter("msg");
-			String prt="";
-			switch(msg){
-				case "1":
-					prt="輸入的帳號或密碼有誤，請重新登入！";
-					break;
-				case "2":
-					prt="請先登入會員再進入！";
-					break;
-				case "3":
-					prt="非管理者不能進入管理介面！";
-					break;
-				case "4":
-					prt="帳號未驗證，請先驗證再行登入！";
-					break;
-				case "5":
-					prt="密碼更新完成，請用新密碼登入！";
-			}
+		if(session.getAttribute("msg")!=null){
+			String msg=(String)session.getAttribute("msg");
+			session.setAttribute("msg",null);
 	%>
-	<h3> Login<span style="font-weight: normal;color:red;font-style: italic;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(prt);%></span></h3>
+	<h3> Login<span style="font-weight: normal;color:red;font-style: italic;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(msg);%></span></h3>
 	<%
 		}else{
 	%>
@@ -219,22 +195,22 @@
 		<div class="span4">
 			<div class="well">
 				<h5>登入會員</h5>
-			<form name="loginFrm" method="post" action="logincheck">
+			<form name="loginFrm" method="post" action="Login">
 			  <div class="control-group">
 				<label class="control-label" for="inputEmail1">Email</label>
 				<div class="controls">
-				  <input class="span3"  type="text" name="login_email" id="inputEmail1" placeholder="Email">
+				  <input class="span3"  type="text" name="mem_email" id="inputEmail1" placeholder="Email">
 				</div>
 			  </div>
 			  <div class="control-group">
 				<label class="control-label" for="inputPassword1">密碼</label>
 				<div class="controls">
-				  <input type="password" class="span3" name="login_password" id="inputPassword1" placeholder="密碼">
+				  <input type="password" class="span3" name="mem_pwd" id="inputPassword1" placeholder="密碼">
 				</div>
 			  </div>
 			  <div class="control-group">
 				<div class="controls">
-				  <button type="button" class="btn" onclick="check_data();">登入</button> <a href="forgetpass.jsp">忘記密碼?</a>
+				  <button type="submit" class="btn">登入</button> <a href="forgetpass.jsp">忘記密碼?</a>
 				</div>
 			  </div>
 			</form>

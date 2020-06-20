@@ -185,23 +185,24 @@
 			<div class="well">
 			
 			
-			<% if(request.getParameter("msg")!=null && request.getParameter("msg").equals("1")){
+			<% if(session.getAttribute("msg")!=null){
 			%>
-			<h5>Reset your password<span style="font-weight: normal;color:red;font-style: italic;font-size: 1.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;Please check your email</span></h5>
+			<h5>Reset your password<span style="font-weight: normal;color:red;font-style: italic;font-size: 1.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%=session.getAttribute("msg")%></span></h5>
 			<% 
 				}else{
 			%>
 			<h5>Reset your password</h5>
 			<%
 				}
+				session.setAttribute("msg", null);
 			%>
 			<br/>
 			Please enter the email address for your account. A verification code will be sent to you. Once you have received the verification code, you will be able to choose a new password for your account.<br/><br/><br/>
-			<form name="myForm" method="post" action="/TeamWeb/doForgetPasswordSendMail">
+			<form name="myForm" method="post" action="/TeamWeb/ForgetPasswordSendMail">
 			  <div class="control-group">
 				<label class="control-label" for="inputEmail1">E-mail address</label>
 				<div class="controls">
-				  <input class="span3"  type="text" name="inputEmail" id="inputEmail1" placeholder="Email">
+				  <input class="span3"  type="text" name="mem_email" id="inputEmail1" placeholder="Email">
 				</div>
 			  </div>
 			  <div class="controls">

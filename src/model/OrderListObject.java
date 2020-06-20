@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class OrderListObject implements Serializable{
+private static final long serialVersionUID = 1L;
 //Field
 private int orderList_id;
 private int mem_id;

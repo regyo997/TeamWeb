@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 
 public class Mem_visit_count implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -16,9 +17,15 @@ public class Mem_visit_count implements Serializable {
 			String sql="INSERT INTO TEAMWEB2020.VIEWCOUNT(VIEW_ID,VIEW_TIME,VIEW_IP) VALUES(?,NOW(),?);";
 			ConnDB conn = new ConnDB();
 			conn.setPreparedStatement(sql);
-			conn.setInt(1, viewId);
-			conn.setString(2, viewIp);
-			conn.executeUpdate();
+			try {
+				conn.setInt(1, viewId);
+				conn.setString(2, viewIp);
+				conn.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
@@ -26,8 +33,14 @@ public class Mem_visit_count implements Serializable {
 		//查詢現在共有幾筆
 				ConnDB conn = new ConnDB(); 
 				conn.setPreparedStatement("SELECT * FROM TEAMWEB2020.VIEWCOUNT;");
-				conn.executeQuery();
-				this.viewN = conn.getQuery_count();
+				try {
+					conn.executeQuery();
+					this.viewN = conn.getQuery_count();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 		return this.viewN;
 	}
 	

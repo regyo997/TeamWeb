@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class ProductDb implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String sql;
 	private ConnDB conn= new ConnDB();
@@ -69,10 +69,31 @@ public class ProductDb implements Serializable{
 		return prodList;
 	}
 	
+	public JSONArray searchProdJSONArray(String keyWord) throws SQLException{
+		ArrayList<Product> srchedProdList = null;
+		try {
+			srchedProdList = (ArrayList<Product>) searchProd(keyWord);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		JSONArray myJsonArr=new JSONArray();
+		for(int i=0;i<srchedProdList.size();i++) {
+			JSONObject myJsonObj=new JSONObject();
+			myJsonObj.put("prod_id", srchedProdList.get(i).getProd_id());
+			myJsonObj.put("prod_name", srchedProdList.get(i).getProd_name());
+			myJsonObj.put("prod_introduction", srchedProdList.get(i).getProd_introduction());
+			myJsonObj.put("prod_price", srchedProdList.get(i).getProd_price());
+			myJsonObj.put("prod_stocksize", srchedProdList.get(i).getProd_stocksize());
+			//==
+			myJsonArr.put(myJsonObj);
+		}
+		return myJsonArr;
+	} 
+	
 	public boolean isAmountEnough(int prod_id,int quantity) throws SQLException{
 		rs=null;
 		boolean bEnough = false;
-		sql="SELECT prod_size_stock FROM teamweb2020.product WHERE prod_id=?";
+		sql="SELECT prod_stocksize FROM teamweb2020.product WHERE prod_id=?";
 		conn.setPreparedStatement(sql);
 		conn.setInt(1, prod_id);
 		conn.executeQuery();
@@ -120,7 +141,7 @@ public class ProductDb implements Serializable{
 				int prod_id = product.getProd_id();
 				int quantity = item.getQuantity();
 				//每個商品庫存減少
-				sql="UPDATE teamweb2020.product SET prod_size_stock=prod_size_stock-? WHERE prod_id =?;";
+				sql="UPDATE teamweb2020.product SET prod_stocksize=prod_stocksize-? WHERE prod_id =?;";
 				conn.setPreparedStatement(sql);
 				conn.setInt(1, quantity);
 				conn.setInt(2, prod_id);

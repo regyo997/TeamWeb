@@ -303,7 +303,7 @@
 							</tbody>
 						</table>
 						<hr class="soft" />
-						<form method="post" action="doCheckOut">
+						<form method="post" action="CheckOut">
 						收件人姓名：
 						<input name="orderList_name" type="text" value="">
 								<br>

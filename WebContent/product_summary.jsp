@@ -269,7 +269,7 @@
 							Continue Shopping </a>
 					</h3>
 					<hr class="soft" />
-					<form name="mainForm" action="doProductSummery">
+					<form name="mainForm" action="ProductSummery">
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -300,7 +300,7 @@
 											<button class="btn" name="minusBtn" type="button" onclick="window.location.href='doPlusMinusDel?minus_id=<%= prod_id %>'">
 												<i class="icon-minus"></i>
 												</button>
-											<button class="btn" name="plusBtn" type="button" onclick="window.location.href='doPlusMinusDel?plus_id=<%= prod_id %>&plus_size_stock=<%=product.getProd_size_stock() %>'">
+											<button class="btn" name="plusBtn" type="button" onclick="window.location.href='doPlusMinusDel?plus_id=<%= prod_id %>&plus_stocksize=<%=product.getProd_stocksize() %>'">
 												<i class="icon-plus"></i>
 											</button>
 											<button class="btn btn-danger" name="delBtn" id="delByn" value="<%=prod_id %>" type="button" onclick="window.location.href='doPlusMinusDel?del_id=<%=prod_id %>'">

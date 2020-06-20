@@ -59,7 +59,7 @@
 					$("#addBtn").click(function(){
 						
 							$.ajax({
-								url:"doSearchAjax",
+								url:"SearchAjax",
 								type:"post",
 								cache:"false",
 								dataType:"json",
@@ -68,7 +68,7 @@
 									prod_name: $("#prod_name").val(),
 									prod_price: $("#prod_price").val(),
 									prod_introduction: $("#prod_introduction").val(),
-									prod_size_stock: $("#prod_size_stock").val(),
+									prod_stocksize: $("#prod_stocksize").val(),
 									fromWho: "product_details.jsp_ajax"	
 								},
 								success:function(result){
@@ -289,13 +289,13 @@
 					  <input type="hidden" name="prod_name" id="prod_name" value="<%=myProd.getProd_name() %>">
 					  <input type="hidden" name="prod_price" id="prod_price" value="<%=myProd.getProd_price() %>">
 					  <input type="hidden" name="prod_introduction" id="prod_introduction" value="<%=myProd.getProd_introduction() %>">
-					  <input type="hidden" name="prod_size_stock" id="prod_size_stock" value="<%=myProd.getProd_size_stock() %>">
+					  <input type="hidden" name="prod_stocksize" id="prod_stocksize" value="<%=myProd.getProd_stocksize() %>">
 					</div>
 				  </div>
 				</form>
 				
 				<hr class="soft"/>
-				<h4><%=myProd.getProd_size_stock() %> items in stock</h4>
+				<h4><%=myProd.getProd_stocksize() %> items in stock</h4>
 				<form class="form-horizontal qtyFrm pull-right">
 				  <div class="control-group">
 					<label class="control-label"><span>Color</span></label>

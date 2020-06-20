@@ -64,7 +64,7 @@
 <form method="post" action="admin_index.jsp"">
 	<input type="submit" id="btnQuit" value="離開" style="float:right;font-family:DFKai-sb;width:5%;font-size:large;">
 </form>
-<form name="imgUpload" id="imgUpload" enctype="multipart/form-data" method="post" action="/TeamWeb/doUploadProducts">
+<form name="imgUpload" id="imgUpload" enctype="multipart/form-data" method="post" action="/TeamWeb/UploadProduct">
 商品名稱<input type="text" name="productName"  style="width:100px; color:#000;" required><br>
 庫存數量<input type="num" name="productLeftNum" style="width:100px; color:#000;" required><br>
 商品價格<input type="text" name="productPrice" style="width:100px; color:#000;" required><br>
@@ -88,14 +88,14 @@
 		//vvv呈現圖片
 		for(int i=myBean.getQuery_count()-1;i>=0;i--){//要改用Array[Qurery數量]
 	%>
-		<form name="updateForm<%=arrP.get(i).getProd_id()%>" method="get" action="doUpdateProducts">
+		<form name="updateForm<%=arrP.get(i).getProd_id()%>" method="get" action="UpdateProduct">
 			<div class="fileItem" style="float:left;">
      	 		
        			<img src="uploadedIMG/<%=arrP.get(i).getProd_id()%>.jpg?sa=<%=(int)(Math.random()*10000)%>" width=200%;><br>
         		商品名稱:&nbsp;<input type="text" name="prodName" value=<%=arrP.get(i).getProd_name()%>><br>
         		商品介紹:&nbsp;<textarea name="prodIntro" style="height:100px;"><%=arrP.get(i).getProd_introduction()%></textarea><br>
         		商品價格:&nbsp;<input type="text" name="prodPrice" value=<%=arrP.get(i).getProd_price()%>><br>
-        		庫存數量:&nbsp;<input type="text" name="prodLeftNum" value=<%=arrP.get(i).getProd_size_stock()%>><br>
+        		庫存數量:&nbsp;<input type="text" name="prodLeftNum" value=<%=arrP.get(i).getProd_stocksize()%>><br>
         		<input type="hidden" name="imgId" value="<%=arrP.get(i).getProd_id()%>">
         		<input type="hidden" name=doWhat id="doWhat_<%=arrP.get(i).getProd_id()%>" value="<%=arrP.get(i).getProd_id()%>">
         		<input type="submit" name="updateBtn" value="修改"  style="width:70%">

@@ -185,20 +185,20 @@
 			<div class="well">
 			<h5>Reset your password</h5><br/>
 			Please enter the new password for your account.<br/><br/><br/>
-			<form name="myForm" method="post" action="/TeamWeb/doForgetPasswordRenewPwd">
+			<form name="myForm" method="post" action="/TeamWeb/ForgetPasswordRenewPwd">
 			  <div class="control-group">
 				<label class="control-label" for="inputEmail1">New password</label>
 				<div class="controls">
-				  <input class="span3" type="password" name="inputpwd" id="inputpwd1" placeholder="大小寫至少各一">
+				  <input class="span3" type="password" name="mem_pwd" id="inputpwd1" placeholder="大小寫至少各一">
 				</div>
 				<label class="control-label" for="inputEmail1">Double check</label>
 				<div class="controls">
-				  <input class="span3" type="password" name="inputpwd2" id="inputpwd2" placeholder="再次輸入密碼">
+				  <input class="span3" type="password" name="mem_pwd2" id="inputpwd2" placeholder="再次輸入密碼">
 				</div>
 			  </div>
 			  <div class="controls">
 			  <input type="hidden" name="enc" value="<%=request.getParameter("enc")%>">
-			  <input type="hidden" name="email" value="<%=request.getParameter("email")%>">
+			  <input type="hidden" name="mem_email" value="<%=request.getParameter("email")%>">
 			  <button type="button" class="btn block" onclick="doCheck()">Submit</button>
 			  </div>
 			</form>

@@ -4,7 +4,7 @@
 	if(session.getAttribute("mem_name") != null){
 	String mem_name =  session.getAttribute("mem_name").toString();
 	if (mem_name == "") {
-		request.setAttribute("msg", "2");
+		session.setAttribute("msg", "權限不足，管理頁面僅限管理員帳號進入!!");
 		String url = "/login";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 	}}

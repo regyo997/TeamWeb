@@ -3,44 +3,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Bootshop online Shopping cart</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<!--Less styles -->
-<!-- Other Less css file //different less files has different color scheam
-	<link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
-	-->
-<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
-	<script src="themes/js/less.js" type="text/javascript"></script> -->
+	<meta charset="utf-8">
+	<title>Bootshop online Shopping cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<!-- Bootstrap style -->
-<link id="callCss" rel="stylesheet"
-	href="themes/bootshop/bootstrap.min.css" media="screen" />
-<link href="themes/css/base.css" rel="stylesheet" media="screen" />
-<!-- Bootstrap style responsive -->
-<link href="themes/css/bootstrap-responsive.min.css" rel="stylesheet" />
-<link href="themes/css/font-awesome.css" rel="stylesheet"
-	type="text/css">
-<!-- Google-code-prettify -->
-<link href="themes/js/google-code-prettify/prettify.css"
-	rel="stylesheet" />
-<!-- fav and touch icons -->
-<link rel="shortcut icon" href="themes/images/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="themes/images/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="themes/images/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="themes/images/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed"
-	href="themes/images/ico/apple-touch-icon-57-precomposed.png">
-<style type="text/css" id="enject"></style>
-<!--我的javascript判斷是否符合格式REG-->
-<script src="js/check_member.js"></script>
+	<!-- Bootstrap style -->
+	<link id="callCss" rel="stylesheet"
+		href="themes/bootshop/bootstrap.min.css" media="screen" />
+	<link href="themes/css/base.css" rel="stylesheet" media="screen" />
+	<!-- Bootstrap style responsive -->
+	<link href="themes/css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="themes/css/font-awesome.css" rel="stylesheet"
+		type="text/css">
+	<!-- Google-code-prettify -->
+	<link href="themes/js/google-code-prettify/prettify.css"
+		rel="stylesheet" />
+	<!-- fav and touch icons -->
+	<link rel="shortcut icon" href="themes/images/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144"
+		href="themes/images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114"
+		href="themes/images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72"
+		href="themes/images/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed"
+		href="themes/images/ico/apple-touch-icon-57-precomposed.png">
+	<style type="text/css" id="enject"></style>
+	<!--我的javascript-->
+	<script src="js/register.js"></script>
 </head>
 <body onload="createCaptcha()">
 	<div id="header">
@@ -231,69 +223,47 @@
 						<li class="active">Registration</li>
 					</ul>
 					<%
-						if(request.getParameter("msg")!=null){
+						if(request.getAttribute("msg")!=null){
 							String msg=request.getParameter("msg");
-							String prt="";
-							switch(msg){
-								case "1":
-									prt="目前系統可能因忙碌而產生會員申請失敗，請過些時候再重新申請會員！";
-									break;
-								case "2":
-									prt="目前系統可能因忙碌而產生發送確認信件失敗，請過些時候前往 [客服中心]=>[已申請會員,重發確認信]。";
-									break;
-								case "3":
-									prt="感謝您註冊新會員成功！請前往郵件信箱收信！點選驗證連結再回到網站！";
-							}
 					%>
-						<h3>註冊會員<span style="font-weight: normal;color:red;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(prt);%></span></h3>
+						<h3>註冊會員<span style="font-weight: normal;color:red;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(msg);%></span></h3>
 					<%
 						}else{
 					%>
 						<h3>註冊會員</h3>
 					<%
 						}
+						request.setAttribute("msg", null);
 					%>
 						<div class="well">
-						<!--
-	<div class="alert alert-info fade in">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-	 </div>
-	<div class="alert fade in">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-	 </div>
-	 <div class="alert alert-block alert-error fade in">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-	 </div> -->
+		
 						<form name="registForm" class="form-horizontal" method="post"
-							action="doRegister">
+							action="RegisterSendMail">
 
 							<div class="control-group">
 								<label class="control-label" for="inputLnam">姓名 <sup>*</sup></label>
 								<div class="controls">
-									<input type="text" name="name" id="inputLnam" placeholder="請輸入真實姓名">
+									<input type="text" name="mem_name" id="meme_name" placeholder="請輸入真實姓名">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="input_email">Email <sup>*</sup></label>
 								<div class="controls">
-									<input type="text" name="email" id="input_email"
+									<input type="text" name="mem_email" id="mem_email"
 										placeholder="請輸入真實E-mail地址">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputPassword1">密碼 <sup>*</sup></label>
 								<div class="controls">
-									<input type="password" name="pw" id="inputPassword1"
+									<input type="password" name="mem_pwd" id="mem_pwd"
 										placeholder="至少含英文大小寫各一">
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="inputPassword2">確認密碼 <sup>*</sup></label>
 								<div class="controls">
-									<input type="password" id="inputPassword2" placeholder="確認密碼">
+									<input type="password" id="mem_pwd2" placeholder="確認密碼">
 								</div>
 							</div>
 							<div class="control-group">

@@ -35,57 +35,32 @@ public class ConnDB {
 		return stmt;
 	}
 	
-	public void setInt(int parameterIndex, int x) {
-		try {
+	public void setInt(int parameterIndex, int x) throws SQLException {
 			stmt.setInt(parameterIndex, x);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e);
-		}
 	}
 	
-	public void setString (int parameterIndex, String x) {
-		try {
+	public void setString (int parameterIndex, String x) throws SQLException {
 			stmt.setString(parameterIndex, x);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e);
-		}
 	}
 	
-	public int getQuery_count() {
-		try {
+	public int getQuery_count() throws SQLException {
 			query_count=0;
 			rs.beforeFirst();
 			while(rs.next())query_count++;
 			rs.beforeFirst();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e);
-		}
 		return query_count;
 	}
 	public int getUpdate_count() {
 		return update_count;
 	}
 	
-	public ResultSet executeQuery() {
-		try {
+	public ResultSet executeQuery() throws SQLException {
 			rs=stmt.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e);
-		}
 		return rs;
 	}
 	
-	public int executeUpdate() {
-		try {
+	public int executeUpdate() throws SQLException {
 			update_count=stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e);
-		}
 		return update_count;
 	}
 	

@@ -23,8 +23,13 @@ public class ProductBean implements Serializable{
 		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_view=1;";
 		ConnDB conn = new ConnDB();
 		conn.setPreparedStatement(sql);
-		conn.executeQuery();
-		queryCount = conn.getQuery_count();
+		try {
+			conn.executeQuery();
+			queryCount = conn.getQuery_count();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		ResultSet rs = conn.getRs();
 		
 		try {
@@ -50,9 +55,15 @@ public class ProductBean implements Serializable{
 		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_id=? AND prod_view=1;";
 		ConnDB conn = new ConnDB();
 		conn.setPreparedStatement(sql);
-		conn.setInt(1, id);
-		conn.executeQuery();
-		queryCount = conn.getQuery_count();
+		try {
+			conn.setInt(1, id);
+			conn.executeQuery();
+			queryCount = conn.getQuery_count();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		ResultSet rs = conn.getRs();
 		
 		try {
@@ -73,9 +84,15 @@ public class ProductBean implements Serializable{
 		String sql = "SELECT * FROM TEAMWEB2020.PRODUCT WHERE prod_view=1 AND prod_name LIKE '%?%';";
 		ConnDB conn = new ConnDB();
 		conn.setPreparedStatement(sql);
-		conn.setString(1, keyWord);
-		conn.executeQuery();
-		queryCount = conn.getQuery_count();
+		try {
+			conn.setString(1, keyWord);
+			conn.executeQuery();
+			queryCount = conn.getQuery_count();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		ResultSet rs = conn.getRs();
 		
 		try {

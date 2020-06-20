@@ -31,7 +31,6 @@ public class SendMail implements Serializable{
     private String to;
     private String subject;
     private String content;
-    private String msg;
     
 
 	public String getTo() {
@@ -75,20 +74,20 @@ public class SendMail implements Serializable{
 	    props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 	}
      
-    public void execute() throws UnsupportedEncodingException {
+    public boolean execute(){
     	try {
             Message message = createMessage(from, to, subject, content);
             Transport.send(message);  
             System.out.println("郵件傳送成功");
-            msg="3";
+            return true;
         } catch (MessagingException e) {
-        	msg="2";
-            throw new RuntimeException(e);
-        }
+        	e.printStackTrace();
+        	return false;
+        } catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return false;
+		}
     }
-    public String getMsg() {
-		return msg;
-	}
     private Message createMessage(
             String from, String to, String subject, String content)
                               throws MessagingException, UnsupportedEncodingException {

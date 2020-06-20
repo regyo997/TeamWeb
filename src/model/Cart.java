@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class Cart implements Serializable{
-
+	private static final long serialVersionUID = 1L;
 	private HashMap<Integer, CartItem> items = null;
 	private int numOfItems=0;
 	
@@ -84,22 +84,22 @@ public class Cart implements Serializable{
 	}
 	
 	public synchronized int renewSizeStock(Integer prod_id) {
-		int prod_size_stock=-1;
+		int prod_stocksize=-1;
 		if (items.containsKey(prod_id)) {
 			CartItem item = (CartItem) items.get(prod_id);
 			Product product = item.getProduct();
 			try {
 				ProductDb productDb = new ProductDb();
-				prod_size_stock = productDb.getProduct(prod_id).getProd_size_stock();
+				prod_stocksize = productDb.getProduct(prod_id).getProd_stocksize();
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			product.setProd_size_stock(prod_size_stock);
+			product.setProd_stocksize(prod_stocksize);
 			item.setProduct(product);
 			items.put(prod_id, item);
 		}
-		return prod_size_stock;	
+		return prod_stocksize;	
 		
 	}
 }

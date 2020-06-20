@@ -21,8 +21,14 @@ public class OrderHistoryDB {
 		//先查訂單主單號
 		sql="SELECT * FROM orderList WHERE mem_id=? ORDER BY orderList_id DESC";
 		conn.setPreparedStatement(sql);
-		conn.setInt(1, mem_id);
-		conn.executeQuery();
+		try {
+			conn.setInt(1, mem_id);
+			conn.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ResultSet rs1 = conn.getRs();
 		ArrayList<OrderListDetailObject> arrDetail = null;
 		try {
