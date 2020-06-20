@@ -24,6 +24,7 @@
     <link rel="apple-touch-icon-precomposed" href="themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;400&display=swap" rel="stylesheet">
+	<script src="js/checkLogin.js"></script>
 </head>
   <!-- Body -->
 <body>
@@ -177,7 +178,7 @@
 			String msg=(String)session.getAttribute("msg");
 			session.setAttribute("msg",null);
 	%>
-	<h3> Login<span style="font-weight: normal;color:red;font-style: italic;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%=msg%></span></h3>
+	<h3> Login<span style="font-weight: normal;color:red;font-style: italic;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(msg);%></span></h3>
 	<%
 		}else{
 	%>

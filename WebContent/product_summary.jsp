@@ -297,13 +297,13 @@
 											<input class="span1" name="quantity_<%=prod_id %>" style="max-width: 34px" value="<%=cart.getItemQuantity(prod_id) %>"
 												id="appendedInputButtons" size="16" type="text"
 												 />
-											<button class="btn" name="minusBtn" type="button" onclick="window.location.href='PlusMinusDel?minus_id=<%= prod_id %>'">
+											<button class="btn" name="minusBtn" type="button" onclick="window.location.href='doPlusMinusDel?minus_id=<%= prod_id %>'">
 												<i class="icon-minus"></i>
 												</button>
-											<button class="btn" name="plusBtn" type="button" onclick="window.location.href='PlusMinusDel?plus_id=<%= prod_id %>&plus_stocksize=<%=product.getProd_stocksize() %>'">
+											<button class="btn" name="plusBtn" type="button" onclick="window.location.href='doPlusMinusDel?plus_id=<%= prod_id %>&plus_stocksize=<%=product.getProd_stocksize() %>'">
 												<i class="icon-plus"></i>
 											</button>
-											<button class="btn btn-danger" name="delBtn" id="delByn" value="<%=prod_id %>" type="button" onclick="window.location.href='PlusMinusDel?del_id=<%=prod_id %>'">
+											<button class="btn btn-danger" name="delBtn" id="delByn" value="<%=prod_id %>" type="button" onclick="window.location.href='doPlusMinusDel?del_id=<%=prod_id %>'">
 												<i class="icon-remove icon-white"></i>
 											</button>
 											刪除

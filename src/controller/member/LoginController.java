@@ -27,26 +27,20 @@ public class LoginController extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		//動作
-		if (memQuery.queryByEmail(mem_email)) {//有找到這人
-			memberObject = memQuery.getMemberObject();
-			if (mem_pwd.equals(memberObject.getMem_pwd())) {// 帳密有對到
-				if (memberObject.getMem_level() > 1) {// 1是未驗證 >1才有登入權限
-					session.setAttribute("mem_id", memberObject.getMem_id());
-					session.setAttribute("mem_name", memberObject.getMem_name());
-					session.setAttribute("mem_level", memberObject.getMem_level());
-					response.sendRedirect("index.jsp");
-				} else {// ==1 還沒驗證
-					session.setAttribute("msg", "帳號未驗證，請先驗證再行登入！");
-					response.sendRedirect("login.jsp");
-				}
-			} else {// 帳密對不起來
-				session.setAttribute("msg", "輸入的帳號或密碼有誤，請重新登入！");
+		memQuery.setEmail(mem_email);
+		memberObject=memQuery.getMemberObject();
+		if(mem_pwd.equals(memberObject.getMem_pwd())) {//有找到這人
+			if(memberObject.getMem_level()>1) {//1是未驗證　>1才有登入權限
+				session.setAttribute("mem_id", memberObject.getMem_id());
+				session.setAttribute("mem_name", memberObject.getMem_name());
+				response.sendRedirect("index.jsp");
+			}else {//==1 還沒驗證
+				session.setAttribute("msg", "帳號未驗證，請先驗證再行登入！");
 				response.sendRedirect("login.jsp");
 			}
-		}else {// 帳號找不到
+		}else {//帳密對不起來
 			session.setAttribute("msg", "輸入的帳號或密碼有誤，請重新登入！");
 			response.sendRedirect("login.jsp");
 		}
-		
 	}
 }

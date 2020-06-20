@@ -223,8 +223,8 @@
 						<li class="active">Registration</li>
 					</ul>
 					<%
-						if(session.getAttribute("msg")!=null){
-							String msg=(String)session.getAttribute("msg");
+						if(request.getAttribute("msg")!=null){
+							String msg=request.getParameter("msg");
 					%>
 						<h3>註冊會員<span style="font-weight: normal;color:red;font-size: 0.6em;font-family:'Noto Serif TC', serif;">&nbsp;&nbsp;<%out.print(msg);%></span></h3>
 					<%
@@ -233,7 +233,7 @@
 						<h3>註冊會員</h3>
 					<%
 						}
-						session.setAttribute("msg", null);
+						request.setAttribute("msg", null);
 					%>
 						<div class="well">
 		
@@ -243,7 +243,7 @@
 							<div class="control-group">
 								<label class="control-label" for="inputLnam">姓名 <sup>*</sup></label>
 								<div class="controls">
-									<input type="text" name="mem_name" id="mem_name" placeholder="請輸入真實姓名">
+									<input type="text" name="mem_name" id="meme_name" placeholder="請輸入真實姓名">
 								</div>
 							</div>
 							<div class="control-group">

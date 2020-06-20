@@ -180,12 +180,12 @@ if(session.getAttribute("cart")==null){
 								</div>
 								<div class="modal-body">
 									<form class="form-horizontal loginFrm" method="post"
-										action="Login">
+										action="doLogin">
 										<div class="control-group">
-											<input name="mem_email" type="text" id="inputEmail" placeholder="Email">
+											<input name="login_email" type="text" id="inputEmail" placeholder="Email">
 										</div>
 										<div class="control-group">
-											<input name="mem_pwd" type="password" id="inputPassword"
+											<input name="login_password" type="password" id="inputPassword"
 												placeholder="Password">
 										</div>
 										<div class="control-group">

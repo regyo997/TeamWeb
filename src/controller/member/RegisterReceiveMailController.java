@@ -29,19 +29,19 @@ public class RegisterReceiveMailController extends HttpServlet {
 			String mem_chkNum = (String)request.getParameter("mem_chkNum");
 			
 			MemQuery memQuery=new MemQuery();
-			if (memQuery.queryByEmail(mem_email) // 有找到這人
-					&& memQuery.getMemberObject().getMem_chkNum().equals(mem_chkNum)) {// 檢驗碼有對到
-				MemUpdate memUpdate = new MemUpdate();
+			memQuery.setEmail(mem_email);
+			if(memQuery.getMemberObject().getMem_chkNum().equals(mem_chkNum)) {
+				MemUpdate memUpdate=new MemUpdate();
 				try {
 					memUpdate.comfirmEmail(mem_email, mem_chkNum);
 					session.setAttribute("msg", "驗證成功!!歡迎成為正式會員!!");
+					response.sendRedirect("login.jsp");					
 				} catch (SQLException e) {
 					e.printStackTrace();
+					session.setAttribute("msg", "驗證失敗，請前往 [客服中心]=>[已申請會員,重發確認信]。");
+					response.sendRedirect("login.jsp");
 				}
-			}else {
-				session.setAttribute("msg", "驗證失敗，請前往 [客服中心]=>[已申請會員,重發確認信]。");
 			}
-			response.sendRedirect("login.jsp");
 		}
 	}
 }

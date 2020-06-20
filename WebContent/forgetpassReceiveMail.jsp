@@ -204,14 +204,15 @@
 			</form>
 			<script>
 				function doCheck(){
-					var pwd=document.myForm.mem_pwd.value;
-					var pwd1=document.myForm.mem_pwd2.value;
+					var pwd=document.myForm.inputpwd.value;
+					var pwd1=document.myForm.inputpwd2.value;
 					
 					var re_pwd=/(^.*[A-Z].*[a-z].*$)|(^.*[a-z].*[A-Z].*$)/;
 					if(!re_pwd.test(pwd)){
 						alert("密碼須包含大小寫各一");
 					}
 					else if(pwd!=pwd1){	
+						alert(pwd1);
 						alert("兩次密碼不符");
 					}else{
 						document.myForm.submit();

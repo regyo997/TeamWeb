@@ -15,7 +15,7 @@ public class IsEmailAlreadyRegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//基本設定
 		request.setCharacterEncoding("utf-8");
@@ -27,9 +27,13 @@ public class IsEmailAlreadyRegisterController extends HttpServlet {
 		
 		/// vvv Driver Connect Statement excuteQuery() 
 		MemQuery memQuery=new MemQuery();
-		Boolean alreadyRegister=memQuery.queryByEmail(email);
-		out.print(alreadyRegister);
+		memQuery.setEmail(email);
+		out.print(memQuery.isExist());
 	}
 
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 
 }

@@ -23,7 +23,7 @@ public class ForgetPasswordRenewPwdController extends HttpServlet {
 		//====
 		String mem_email=request.getParameter("mem_email");
 		String mem_chkNum = request.getParameter("enc");
-		String mem_pwd = request.getParameter("mem_pwd");		
+		String mem_pwd = request.getParameter("inputpwd");		
 		//====
 		MemUpdate memUpdate=new MemUpdate();
 		if(memUpdate.updatePwd(mem_email, mem_pwd, mem_chkNum))
