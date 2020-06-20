@@ -39,9 +39,9 @@ public class PlusMinusDelController extends HttpServlet {
 			session.setAttribute("cart", cart);
 		}else if(request.getParameter("plus_id")!=null) {
 			int prod_id=Integer.parseInt(request.getParameter("plus_id"));
-			int prod_stock_size=Integer.parseInt(request.getParameter("plus_size_stock"));
+			int prod_stocksize=Integer.parseInt(request.getParameter("plus_stocksize"));
 			cart=(Cart)session.getAttribute("cart");
-			if(cart.getItemQuantity(prod_id)+1<=prod_stock_size) {
+			if(cart.getItemQuantity(prod_id)+1<=prod_stocksize) {
 				cart.setItemNum(prod_id, cart.getItemQuantity(prod_id)+1);
 				session.setAttribute("cart", cart);
 			}
